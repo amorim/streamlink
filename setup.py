@@ -54,6 +54,7 @@ with codecs.open(path.join(this_directory, "README.md"), 'r', "utf8") as f:
 
 
 def is_wheel_for_windows():
+    return True
     if "bdist_wheel" in argv:
         names = ["win32", "win-amd64", "cygwin"]
         length = len(argv)

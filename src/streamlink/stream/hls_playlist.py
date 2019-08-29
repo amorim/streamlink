@@ -147,10 +147,10 @@ class M3U8Parser(object):
         self.state["byterange"] = self.parse_byterange(value)
 
     def parse_tag_ext_x_targetduration(self, value):
-        self.m3u8.target_duration = int(value)
+        self.m3u8.target_duration = int(value.replace(",00", "").replace(",", "."))
 
     def parse_tag_ext_x_media_sequence(self, value):
-        self.m3u8.media_sequence = int(value)
+        self.m3u8.media_sequence = int(value.replace(",00", "").replace(",", "."))
 
     def parse_tag_ext_x_key(self, value):
         attr = self.parse_attributes(value)
@@ -198,7 +198,7 @@ class M3U8Parser(object):
         self.state["map"] = None
 
     def parse_tag_ext_x_discontinuity_sequence(self, value):
-        self.m3u8.discontinuity_sequence = int(value)
+        self.m3u8.discontinuity_sequence = int(value.replace(",00", "").replace(",", "."))
 
     def parse_tag_ext_x_i_frames_only(self, value):
         self.m3u8.iframes_only = True
@@ -216,7 +216,7 @@ class M3U8Parser(object):
         self.m3u8.playlists.append(playlist)
 
     def parse_tag_ext_x_version(self, value):
-        self.m3u8.version = int(value)
+        self.m3u8.version = int(value.replace(",00", "").replace(",", "."))
 
     def parse_tag_ext_x_start(self, value):
         attr = self.parse_attributes(value)
